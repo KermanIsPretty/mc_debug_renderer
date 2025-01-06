@@ -38,10 +38,9 @@ public record DebugMessage(
      * @return The packet to send to an audience.
      */
     public PluginMessagePacket getPacket() {
-        var buffer = NetworkBuffer.resizableBuffer();
-        buffer.write(SimplePacketRegistry.OPERATION_REGISTRY.serializer().list(), ops);
-        byte[] bytes = buffer.extractBytes(extractor -> extractor.read(NetworkBuffer.RAW_BYTES));
-        return new PluginMessagePacket("debug:shapes", bytes);
+        return new PluginMessagePacket("debug:shapes", NetworkBuffer.makeArray(buffer -> {
+            buffer.write(SimplePacketRegistry.OPERATION_REGISTRY.serializer().list(), ops);
+        }));
     }
 
 
