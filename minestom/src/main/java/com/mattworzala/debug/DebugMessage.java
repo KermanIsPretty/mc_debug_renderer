@@ -39,7 +39,7 @@ public record DebugMessage(
      */
     public PluginMessagePacket getPacket() {
         return new PluginMessagePacket("debug:shapes", NetworkBuffer.makeArray(buffer -> {
-            buffer.write(SimplePacketRegistry.OPERATION_REGISTRY.serializer().list(), ops);
+            buffer.write(SimplePacketRegistry.OPERATION_SERIALIZER.list(), ops);
         }));
     }
 

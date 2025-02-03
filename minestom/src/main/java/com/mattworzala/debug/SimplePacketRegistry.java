@@ -32,6 +32,10 @@ sealed interface SimplePacketRegistry<T> {
     SimplePacketRegistry<Operation> OPERATION_REGISTRY = new OperationRegistry();
     SimplePacketRegistry<Shape> SHAPE_REGISTRY = new ShapeRegistry();
 
+    // Serializers
+    NetworkBuffer.Type<Operation> OPERATION_SERIALIZER = OPERATION_REGISTRY.serializer();
+    NetworkBuffer.Type<Shape> SHAPE_SERIALIZER = SHAPE_REGISTRY.serializer();
+
     //TODO: Update semantics to JDK22 when available.
     record OperationRegistry() implements SimplePacketRegistry<Operation> {
         @Override

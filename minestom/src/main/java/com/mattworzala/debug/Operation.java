@@ -15,7 +15,7 @@ public interface Operation {
     ) implements Operation {
         public static final NetworkBuffer.Type<Set> SERIALIZER = NetworkBufferTemplate.template(
                 KeyType.KEY, Set::key,
-                SimplePacketRegistry.SHAPE_REGISTRY.serializer(), Set::shape,
+                SimplePacketRegistry.SHAPE_SERIALIZER, Set::shape,
                 Set::new
         );
 
